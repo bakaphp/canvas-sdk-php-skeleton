@@ -1,0 +1,2 @@
+tests/cli/CheckHelpTaskCest.php:checkHelp
+tests/api/RolesCrudAccessListCest.php:delete

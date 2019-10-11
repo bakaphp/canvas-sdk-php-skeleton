@@ -1,0 +1,41 @@
+version: "3.5"
+
+services:
+
+  #php server
+  canvasdk:
+    image: mctekk/phalconphp:latest
+    volumes:
+      - .:/app
+      - ../canvas-core:/canvas-core
+      - ../../baka:/baka
+    tty: true
+    ports:
+      - "9001:9000"
+    networks:
+      - local-network
+
+  nginx:
+    image: nginx:latest
+    ports:
+        - "81:80"
+    links:
+        - canvasdk
+    volumes:
+        - .:/app
+        - ./storage/ci/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - local-network
+      - public-network
+
+volumes:
+  db-data:
+  redis:
+  esdata:
+  rabbitsvolumns:
+
+networks:
+  local-network:
+  public-network:
+  canvasproxynet:
+    name: canvas_network
