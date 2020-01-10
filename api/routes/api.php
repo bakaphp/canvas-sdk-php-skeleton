@@ -2,17 +2,22 @@
 
 use Baka\Router\RouteGroup;
 use Baka\Router\Route;
+use function Gewaer\Core\appPath;
+
+$canvasPublicRoutes = require appPath('api/routes/CanvasPublicRoutes.php');
+$canvasPrivateRoutes = require appPath('api/routes/CanvasPrivateRoutes.php');
 
 $publicRoutes = [
     Route::get('/')->controller('IndexController'),
     Route::get('/status')->controller('IndexController')->action('status'),
-    Route::crud('/users')->controller('UsersController'),
-    Route::post('/login')->controller('AuthController')->action('login'),
-    Route::post('/signup')->controller('AuthController')->action('create')
 ];
 
 $privateRoutes = [
 ];
+
+// Lets merge Kanvas Default Routes with the public Routes since Kanvas routes
+$publicRoutes = array_merge($canvasPublicRoutes, $publicRoutes);
+$privateRoutes = array_merge($canvasPrivateRoutes, $privateRoutes);
 
 $routeGroup = RouteGroup::from($publicRoutes)
                 ->defaultNamespace('Gewaer\Api\Controllers')
