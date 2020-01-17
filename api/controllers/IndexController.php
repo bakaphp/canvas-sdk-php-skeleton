@@ -32,12 +32,6 @@ class IndexController extends BaseController
      */
     public function index($id = null) : Response
     {
-        Canvas::setApiKey('asdeaefaefaefae');
-        Auth::auth(['email'=> 'max@mctekk.com','password'=>'nosenose']);
-
-        $users = Users::all();
-
-        return $this->response($users);
         return $this->response(['Woot Canvas']);
     }
 
