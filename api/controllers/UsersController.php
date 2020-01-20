@@ -6,9 +6,9 @@ namespace Gewaer\Api\Controllers;
 
 use Phalcon\Http\Response;
 use Canvas\Api\Controllers\IndexController as CanvasIndexController;
-use Canvas\Canvas;
-use Canvas\Resources\Auth;
-use Canvas\Resources\Users;
+use Kanvas\Sdk\Kanvas;
+use Kanvas\Sdk\Auth;
+use Kanvas\Sdk\Models\Users;
 
 /**
  * Class UsersController.
@@ -29,10 +29,10 @@ class UsersController extends BaseController
      */
     public function onConstruct()
     {
-        // if (!Canvas::getAuthToken()) {
-        //     Canvas::setApiKey('asdeaefaefaefae');
-        //     Auth::auth(['email' => 'max@mctekk.com', 'password' => 'nosenose']);
-        // }
+        if (!Kanvas::getAuthToken()) {
+            Kanvas::setApiKey('asdeaefaefaefae');
+            Auth::auth(['email' => 'max@mctekk.com', 'password' => 'nosenose']);
+        }
     }
 
     /**
@@ -45,11 +45,9 @@ class UsersController extends BaseController
      */
     public function index($id = null) : Response
     {
-        $auth = Canvas::getAuthToken();
-        // Should we set the token before
-        $users = Users::all();
+        $users = Users::find();
 
-        return $this->response($auth);
+        return $this->response($users);
     }
 
     /**
@@ -64,7 +62,8 @@ class UsersController extends BaseController
      */
     public function getById($id) : Response
     {
-        $user = Users::retrieve($id);
+        return $this->response('hello from skeleton');
+        $user = Users::findFirst($id);
 
         return $this->response($user);
     }
