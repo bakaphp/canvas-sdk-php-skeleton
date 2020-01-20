@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Baka\Http\Api\BaseController as BakaBaseController;
-use Kanvas\Passthroughs\PhalconPassthrough;
+use Kanvas\Sdk\Passthroughs\PhalconPassthrough;
 
 /**
  * Class IndexController.

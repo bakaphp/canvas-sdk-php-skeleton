@@ -2,7 +2,7 @@
 
 use Baka\Router\RouteGroup;
 use Baka\Router\Route;
-use Kanvas\Routes\RouteConfigurator;
+use Kanvas\Sdk\Routes\RouteConfigurator;
 
 $publicRoutes = [
     Route::get('/')->controller('IndexController'),
@@ -13,8 +13,8 @@ $privateRoutes = [
 ];
 
 // Lets merge Kanvas Default Routes with the public Routes since Kanvas routes
-$publicRoutes = RouteConfigurator::mergePrivateRoutes($privateRoutes);
-$privateRoutes = RouteConfigurator::mergePublicRoutes($publicRoutes);
+$publicRoutes = RouteConfigurator::mergePublicRoutes($publicRoutes);
+$privateRoutes = RouteConfigurator::mergePrivateRoutes($privateRoutes);
 
 $routeGroup = RouteGroup::from($publicRoutes)
                 ->defaultNamespace('Gewaer\Api\Controllers')
