@@ -5,7 +5,7 @@ namespace Gewaer\Api\Controllers;
 
 use Baka\Http\Api\BaseController as BakaBaseController;
 use Baka\Http\Contracts\Api\CrudBehaviorTrait;
-use Canvas\Canvas;
+use Kanvas\Sdk\Kanvas;
 
 /**
  * Class BaseController.
@@ -30,8 +30,8 @@ abstract class BaseController extends BakaBaseController
      */
     public function onConstruct()
     {
-        if (!Canvas::getAuthToken()) {
-            Canvas::setApiKey('asdeaefaefaefae');
+        if (!Kanvas::getAuthToken()) {
+            Kanvas::setApiKey('asdeaefaefaefae');
         }
     }
 }

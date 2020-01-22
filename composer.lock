@@ -247,12 +247,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bakaphp/canvas-sdk-php.git",
-                "reference": "4aa35312267b78dbb99776463f1cb12f7af5b41b"
+                "reference": "2640a8d8b9fe42277490ee2901cb03921d838db7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bakaphp/canvas-sdk-php/zipball/4aa35312267b78dbb99776463f1cb12f7af5b41b",
-                "reference": "4aa35312267b78dbb99776463f1cb12f7af5b41b",
+                "url": "https://api.github.com/repos/bakaphp/canvas-sdk-php/zipball/2640a8d8b9fe42277490ee2901cb03921d838db7",
+                "reference": "2640a8d8b9fe42277490ee2901cb03921d838db7",
                 "shasum": ""
             },
             "require": {
@@ -291,7 +291,7 @@
             ],
             "description": "A PHP client library for accessing Kanvas APIs",
             "homepage": "https://github.com/bakaphp/canvas-sdk-php",
-            "time": "2020-01-20T14:52:21+00:00"
+            "time": "2020-01-20T19:59:03+00:00"
         },
         {
             "name": "dariuszp/cli-progress-bar",
