@@ -7,6 +7,8 @@ use function Gewaer\Core\appPath;
 
 $publicRoutes = [
     Route::get('/status')->controller('IndexController')->action('status'),
+    Route::post('/login')->controller('AuthController')->action('login'),
+    Route::post('/signup')->controller('AuthController')->action('signup')
 ];
 
 $privateRoutes = [

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Canvas\Canvas;
-use Canvas\Resources\Auth;
-use Canvas\Resources\Users;
+use Kanvas\Sdk\Kanvas;
+use Kanvas\Sdk\Auth;
+use Kanvas\Sdk\Users;
 use Phalcon\Http\Response;
 
 /**
@@ -33,7 +33,7 @@ class AuthController extends BaseController
     {
         $request = $this->request->getPost();
         $auth = Auth::auth($request);
-        Canvas::setAuthToken($auth->token);
+        Kanvas::setAuthToken($auth->token);
         return $this->response($auth);
     }
 
