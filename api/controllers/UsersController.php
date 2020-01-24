@@ -62,7 +62,6 @@ class UsersController extends BaseController
      */
     public function getById($id) : Response
     {
-        return $this->response('hello from skeleton');
         $user = Users::findFirst($id);
 
         return $this->response($user);

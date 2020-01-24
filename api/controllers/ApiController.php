@@ -6,6 +6,7 @@ namespace Gewaer\Api\Controllers;
 
 use Baka\Http\Api\BaseController as BakaBaseController;
 use Kanvas\Sdk\Passthroughs\PhalconPassthrough;
+use Phalcon\Http\Response;
 
 /**
  * Class IndexController.
@@ -20,4 +21,14 @@ use Kanvas\Sdk\Passthroughs\PhalconPassthrough;
 class ApiController extends BakaBaseController
 {
     use PhalconPassthrough;
+
+    public function publicTransporter(): Response
+    {
+        return $this->transporter();
+    }
+
+    public function privateTransporter(): Response
+    {
+        return $this->transporter();
+    }
 }
