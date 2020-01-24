@@ -6,15 +6,11 @@ use Kanvas\Sdk\Routes\RouteConfigurator;
 use function Gewaer\Core\appPath;
 
 $publicRoutes = [
-    // Route::get('/')->controller('IndexController'),
     Route::get('/status')->controller('IndexController')->action('status'),
-    // Route::get('/users')->controller('ApiController')->action('transporter')
-    // Route::get('/users')->controller('UsersController')->action('index'),
-    // Route::get('/users/{id}')->controller('UsersController')->action('getById')
 ];
 
 $privateRoutes = [
-    // Route::get('/users')->controller('UsersController')->action('index')
+    Route::get('/users')->controller('UsersController')->action('index')
 ];
 
 // Lets merge Kanvas Default Routes with the public Routes since Kanvas routes

@@ -30,8 +30,7 @@ class UsersController extends BaseController
     public function onConstruct()
     {
         if (!Kanvas::getAuthToken()) {
-            Kanvas::setApiKey('asdeaefaefaefae');
-            Auth::auth(['email' => 'max@mctekk.com', 'password' => 'nosenose']);
+            Kanvas::setAuthToken($this->userToken);
         }
     }
 
@@ -46,7 +45,6 @@ class UsersController extends BaseController
     public function index($id = null) : Response
     {
         $users = Users::find();
-
         return $this->response($users);
     }
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Gewaer\Middleware;
 
 use Canvas\Middleware\NotFoundMiddleware as CanvasNotFoundMiddleware;
-use function Gewaer\Core\isSwooleServer;
 
 /**
  * Class NotFoundMiddleware.

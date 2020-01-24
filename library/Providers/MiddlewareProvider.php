@@ -4,12 +4,19 @@ declare(strict_types=1);
 
 namespace Gewaer\Providers;
 
-use Canvas\Providers\MiddlewareProvider as CanvasMiddlewareProvider;
+use Canvas\Middleware\NotFoundMiddleware;
+use Baka\Router\Providers\MiddlewareProvider as BakaMiddlewareProvider;
+use Gewaer\Middleware\AuthenticationMiddleware;
+use Gewaer\Middleware\AclMiddleware;
+use Gewaer\Middleware\SubscriptionMiddleware;
+use Phalcon\Mvc\Micro;
+use Phalcon\Events\Manager;
 
-class MiddlewareProvider extends CanvasMiddlewareProvider
+class MiddlewareProvider extends BakaMiddlewareProvider
 {
-    protected $globalMiddlewares = [
+    protected $canvasGlobalMiddlewares = [
         // Before the handler has been executed
+        NotFoundMiddleware::class => 'before',
     ];
 
     /**
@@ -20,6 +27,26 @@ class MiddlewareProvider extends CanvasMiddlewareProvider
      *
      * @var array
      */
-    protected $routeMiddlewares = [
+    protected $canvasRouteMiddlewares = [
+        'auth.jwt' => AuthenticationMiddleware::class,
+        'auth.acl' => AclMiddleware::class,
+        'auth.subscription' => SubscriptionMiddleware::class
     ];
+
+    /**
+     * Attaches the middleware to the application.
+     *
+     * @param Micro   $application
+     * @param Manager $eventsManager
+     */
+    protected function attachMiddleware(Micro $application, Manager $eventsManager)
+    {
+        /**
+         * Merge canvas Middleware with the app middleware.
+         */
+        $this->globalMiddlewares = array_merge($this->globalMiddlewares, $this->canvasGlobalMiddlewares);
+        $this->routeMiddlewares = array_merge($this->routeMiddlewares, $this->canvasRouteMiddlewares);
+
+        parent::attachMiddleware($application, $eventsManager);
+    }
 }

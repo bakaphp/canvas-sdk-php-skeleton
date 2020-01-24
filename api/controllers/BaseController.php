@@ -22,16 +22,4 @@ abstract class BaseController extends BakaBaseController
      * @var int
      */
     public $softDelete = 1;
-
-    /**
-     * Constructor.
-     *
-     * @return void
-     */
-    public function onConstruct()
-    {
-        if (!Kanvas::getAuthToken()) {
-            Kanvas::setApiKey('asdeaefaefaefae');
-        }
-    }
 }
