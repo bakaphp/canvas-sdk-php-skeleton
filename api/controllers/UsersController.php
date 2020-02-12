@@ -8,7 +8,8 @@ use Phalcon\Http\Response;
 use Canvas\Api\Controllers\IndexController as CanvasIndexController;
 use Kanvas\Sdk\Kanvas;
 use Kanvas\Sdk\Auth;
-use Kanvas\Sdk\Models\Users;
+use Kanvas\Sdk\Models\Users as SdkUsers;
+use Gewaer\Models\Users;
 
 /**
  * Class UsersController.
@@ -32,6 +33,7 @@ class UsersController extends BaseController
         if (!Kanvas::getAuthToken()) {
             Kanvas::setAuthToken($this->userToken);
         }
+        $this->model = new Users();
     }
 
     /**
@@ -44,7 +46,7 @@ class UsersController extends BaseController
      */
     public function index($id = null) : Response
     {
-        $users = Users::find();
+        $users = SdkUsers::find();
         return $this->response($users);
     }
 
@@ -60,7 +62,7 @@ class UsersController extends BaseController
      */
     public function getById($id) : Response
     {
-        $user = Users::findFirst($id);
+        $user = SdkUsers::findFirst($id);
 
         return $this->response($user);
     }
@@ -77,23 +79,7 @@ class UsersController extends BaseController
     {
         $request = $this->request->getPost();
 
-        $user = Users::create($request);
-        return $this->response($user);
-    }
-
-    /**
-     * Update User.
-     *
-     * @method GET
-     * @url /status
-     *
-     * @return Response
-     */
-    public function edit($id) : Response
-    {
-        $request = $this->request->getPut();
-
-        $user = Users::update($id, $request);
+        $user = SdkUsers::create($request);
         return $this->response($user);
     }
 
@@ -107,7 +93,7 @@ class UsersController extends BaseController
      */
     public function delete($id) : Response
     {
-        $user = Users::delete($id);
+        $user = SdkUsers::delete($id);
         return $this->response($user);
     }
 }
