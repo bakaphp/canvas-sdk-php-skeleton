@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Providers;
 
-use Canvas\Middleware\NotFoundMiddleware;
+use Gewaer\Middleware\NotFoundMiddleware;
 use Baka\Router\Providers\MiddlewareProvider as BakaMiddlewareProvider;
 use Gewaer\Middleware\AuthenticationMiddleware;
 use Gewaer\Middleware\AclMiddleware;
