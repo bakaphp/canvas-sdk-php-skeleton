@@ -96,4 +96,46 @@ class UsersController extends BaseController
         $user = SdkUsers::delete($id);
         return $this->response($user);
     }
+
+    /**
+     * Update User.
+     *
+     * @method GET
+     * @url /status
+     *
+     * @return Response
+     */
+    public function getAllCustomFields() : Response
+    {
+        return $this->response(Users::getAllCustomFields());
+    }
+
+    /**
+     * Update User.
+     *
+     * @method GET
+     * @url /status
+     *
+     * @return Response
+     */
+    public function getCustomFields() : Response
+    {
+        $request = $this->request->getPost();
+        return $this->response(Users::getCustomField($request['name'], $request['custom_fields_module_id']));
+    }
+
+    /**
+     * Update User.
+     *
+     * @method GET
+     * @url /status
+     *
+     * @return Response
+     */
+    public function addCustomFields() : Response
+    {
+        $request = $this->request->getPost();
+        return $this->response(Users::createCustomField($request['name'], (int)$request['field_type_id'], (int)$request['custom_fields_module_id']));
+    }
+    
 }

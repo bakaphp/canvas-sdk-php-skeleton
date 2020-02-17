@@ -5,6 +5,7 @@ namespace Gewaer\Models;
 
 use Canvas\Models\Users as CanvasUsers;
 use Kanvas\Sdk\Traits\FileSystemModelTrait;
+use Kanvas\Sdk\Traits\CustomFieldsTrait;
 use Phalcon\Di;
 
 /**
@@ -21,6 +22,7 @@ use Phalcon\Di;
 class Users extends BaseModel
 {
     use FileSystemModelTrait;
+    use CustomFieldsTrait;
 
     /**
      * Upload Files.
