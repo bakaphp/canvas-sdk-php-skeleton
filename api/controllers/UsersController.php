@@ -12,6 +12,8 @@ use Kanvas\Sdk\Auth;
 use Kanvas\Sdk\Models\Users as SdkUsers;
 use Kanvas\Sdk\CustomFieldsModules;
 use Gewaer\Models\Users;
+use Canvas\Validation as CanvasValidation;
+use Phalcon\Validation\Validator\PresenceOf;
 
 /**
  * Class UsersController.
@@ -121,7 +123,15 @@ class UsersController extends BaseController
     public function getCustomFields() : Response
     {
         $request = $this->request->getPostData();
-        return $this->response(Users::getCustomField($request['name'], $request['custom_fields_module_id']));
+
+        $validation = new CanvasValidation();
+        $validation->add('name', new PresenceOf(['message' => 'The name is required.']));
+        $validation->add('custom_fields_module_id', new PresenceOf(['message' => 'The custom_fields_module_id is required.']));
+        $validation->validate($request);
+
+        $customFieldsModule = CustomFieldsModules::retrieve($request['custom_fields_module_id']);
+
+        return $this->response(Users::getCustomField($request['name'], (int)$customFieldsModule->id));
     }
 
     /**
@@ -134,6 +144,12 @@ class UsersController extends BaseController
     public function addCustomFields() : Response
     {
         $request = $this->request->getPostData();
+
+        $validation = new CanvasValidation();
+        $validation->add('name', new PresenceOf(['message' => 'The name is required.']));
+        $validation->add('field_type_id', new PresenceOf(['message' => 'The fields_type_id is required.']));
+        $validation->add('custom_fields_module_id', new PresenceOf(['message' => 'The custom_fields_module_id is required.']));
+        $validation->validate($request);
 
         $customFieldsModule = CustomFieldsModules::retrieve($request['custom_fields_module_id']);
 
