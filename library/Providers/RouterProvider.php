@@ -21,6 +21,7 @@ class RouterProvider extends BakaRouterProvider
         }
         return $routerCollections;
     }
+
     /**
      * Returns the array for all the routes on this system.
      *

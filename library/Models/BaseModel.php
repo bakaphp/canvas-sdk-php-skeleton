@@ -7,5 +7,4 @@ use Canvas\Models\AbstractModel;
 
 class BaseModel extends AbstractModel
 {
-
 }

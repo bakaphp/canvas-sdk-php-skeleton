@@ -11,6 +11,7 @@ use Phalcon\Http\Request;
 use Throwable;
 use Canvas\Exception\ServerErrorHttpException;
 use Gewaer\Constants\Flags;
+use Kanvas\Sdk\Kanvas;
 
 /**
  * Class Api.
@@ -28,7 +29,9 @@ class Api extends AbstractBootstrap
      */
     public function run()
     {
+
         try {
+            Kanvas::setApiKey(getenv('KANVAS_SDK_API_KEY'));
             return $this->application->handle();
         } catch (Throwable $e) {
             $this->handleException($e)->send();
