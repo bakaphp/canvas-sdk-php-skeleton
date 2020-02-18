@@ -137,10 +137,6 @@ class UsersController extends BaseController
 
         $customFieldsModule = CustomFieldsModules::retrieve($request['custom_fields_module_id']);
 
-        if(!$customFieldsModule){
-            throw new Exception('Fields Custom Module not found');
-        }
-
         return $this->response(Users::createCustomField($request['name'], (int)$request['field_type_id'], (int)$customFieldsModule->id));
     }
 
