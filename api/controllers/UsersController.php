@@ -101,7 +101,6 @@ class UsersController extends BaseController
      * Update User.
      *
      * @method GET
-     * @url /status
      *
      * @return Response
      */
@@ -114,7 +113,6 @@ class UsersController extends BaseController
      * Update User.
      *
      * @method GET
-     * @url /status
      *
      * @return Response
      */
@@ -127,8 +125,7 @@ class UsersController extends BaseController
     /**
      * Update User.
      *
-     * @method GET
-     * @url /status
+     * @method POST
      *
      * @return Response
      */
@@ -137,5 +134,17 @@ class UsersController extends BaseController
         $request = $this->request->getPost();
         return $this->response(Users::createCustomField($request['name'], (int)$request['field_type_id'], (int)$request['custom_fields_module_id']));
     }
-    
+
+    /**
+     * Update User.
+     *
+     * @method GET
+     * @url /status
+     * @param string $name
+     * @return Response
+     */
+    public function addCustomFieldsModule(string $name) : Response
+    {
+        return $this->response(Users::createCustomFieldsModule($name));
+    }
 }
