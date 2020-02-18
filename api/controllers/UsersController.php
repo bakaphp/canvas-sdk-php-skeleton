@@ -6,9 +6,11 @@ namespace Gewaer\Api\Controllers;
 
 use Phalcon\Http\Response;
 use Canvas\Api\Controllers\IndexController as CanvasIndexController;
+use Exception;
 use Kanvas\Sdk\Kanvas;
 use Kanvas\Sdk\Auth;
 use Kanvas\Sdk\Models\Users as SdkUsers;
+use Kanvas\Sdk\CustomFieldsModules;
 use Gewaer\Models\Users;
 
 /**
@@ -118,7 +120,7 @@ class UsersController extends BaseController
      */
     public function getCustomFields() : Response
     {
-        $request = $this->request->getPost();
+        $request = $this->request->getPostData();
         return $this->response(Users::getCustomField($request['name'], $request['custom_fields_module_id']));
     }
 
@@ -131,8 +133,15 @@ class UsersController extends BaseController
      */
     public function addCustomFields() : Response
     {
-        $request = $this->request->getPost();
-        return $this->response(Users::createCustomField($request['name'], (int)$request['field_type_id'], (int)$request['custom_fields_module_id']));
+        $request = $this->request->getPostData();
+
+        $customFieldsModule = CustomFieldsModules::retrieve($request['custom_fields_module_id']);
+
+        if(!$customFieldsModule){
+            throw new Exception('Fields Custom Module not found');
+        }
+
+        return $this->response(Users::createCustomField($request['name'], (int)$request['field_type_id'], (int)$customFieldsModule->id));
     }
 
     /**
