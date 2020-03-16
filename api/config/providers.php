@@ -5,6 +5,7 @@
  */
 
 use Gewaer\Providers\ConfigProvider;
+use Gewaer\Providers\RegistryProvider;
 use Gewaer\Providers\AppProvider;
 use Gewaer\Providers\RouterProvider;
 use Gewaer\Providers\RequestProvider;
@@ -16,6 +17,7 @@ return [
     AppProvider::class,
     RequestProvider::class,
     RouterProvider::class,
+    RegistryProvider::class,
     DatabaseProvider::class,
     MiddlewareProvider::class
 ];

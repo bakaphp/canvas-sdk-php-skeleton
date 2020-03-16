@@ -6,7 +6,7 @@ namespace Gewaer\Models;
 use Canvas\Models\Users as CanvasUsers;
 use Kanvas\Sdk\Traits\FileSystemModelTrait;
 use Kanvas\Sdk\Traits\CustomFieldsTrait;
-use Phalcon\Di;
+use Kanvas\Sdk\Traits\PermissionsTrait;
 
 /**
  * Class Users.
@@ -19,8 +19,9 @@ use Phalcon\Di;
  * @property Companies $defaultCompany
  * @property \Phalcon\Di $di
  */
-class Users extends BaseModel
+class Users extends CanvasUsers
 {
+    use PermissionsTrait;
     use FileSystemModelTrait;
     use CustomFieldsTrait;
 
