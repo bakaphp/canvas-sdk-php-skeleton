@@ -9,16 +9,32 @@ services:
       - .:/app
       - ../canvas-core:/canvas-core
       - ../../baka:/baka
+    depends_on: 
+      - 'redis'
     tty: true
     ports:
-      - "9001:9000"
+      - "9002:9000"
     networks:
       - local-network
+
+  swoole:
+    build: .
+    volumes:
+      - .:/app
+      - ../canvas-core:/canvas-core
+      - ../../baka:/baka
+    depends_on:
+      - 'redis'
+    tty: true
+    ports:
+      - "8081:8081"
+    networks:
+      - local-network 
 
   nginx:
     image: nginx:latest
     ports:
-        - "81:80"
+        - "82:80"
     links:
         - canvasdk
     volumes:
@@ -27,6 +43,15 @@ services:
     networks:
       - local-network
       - public-network
+
+  redis:
+    image: 'redis:5.0.5-alpine'
+    ports: 
+      - "6379:6379"
+    volumes:
+      - 'redis:/data'
+    networks:
+      - local-network
 
 volumes:
   db-data:

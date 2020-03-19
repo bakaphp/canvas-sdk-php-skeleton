@@ -4,7 +4,7 @@ namespace Gewaer\Providers;
 
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\DiInterface;
-use Gewaer\Acl\RedisManager;
+use Gewaer\Acl\Manager;
 use Phalcon\Acl;
 
 class AclProvider implements ServiceProviderInterface
@@ -20,7 +20,7 @@ class AclProvider implements ServiceProviderInterface
         $container->setShared(
             'acl',
             function () use ($redis) {
-                $acl = new RedisManager($redis);
+                $acl = new Manager($redis);
 
                 return $acl;
             }
