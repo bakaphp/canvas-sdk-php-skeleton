@@ -14,7 +14,7 @@ use Phalcon\Acl\RoleInterface;
  *
  * Manages ACL lists in Redis Database
  */
-class RedisManager extends Adapter
+class Manager extends Adapter
 {
     /**
      * @var bool
