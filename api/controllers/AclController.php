@@ -20,8 +20,6 @@ use Exception;
  * @property Beanstalk $queue
  * @property Mysql $db
  * @property \Monolog\Logger $log
- * @todo Seperate by functions the actions for roles, resources, permissions.
- *       This will be called by the the Admin app api by guzzle when there are changes in permission
  */
 class AclController extends BakaBaseController
 {
@@ -54,7 +52,6 @@ class AclController extends BakaBaseController
      *
      * @param string $key
      * @return void
-     * @todo Verify if request comes from default admin app
      */
     private function verifyRequestOrigin(string $key): void
     {
@@ -104,11 +101,10 @@ class AclController extends BakaBaseController
         if (!$this->acl->isResource($resource)) {
             $this->acl->addResource($resource);
         }
-        
     }
 
     /**
-     * Process Permissions
+     * Process Permissions.
      *
      * @param string $role
      * @param string $resource
@@ -117,11 +113,10 @@ class AclController extends BakaBaseController
      */
     private function processPermissions(string $role, string $resource, array $permissions): void
     {
-        if (array_key_exists('allow',$permissions)) {
+        if (array_key_exists('allow', $permissions)) {
             $this->acl->allow($role, $resource, $permissions['allow']);
-        } else{
+        } else {
             $this->acl->allow($role, $resource, $permissions['deny']);
-        }   
-
+        }
     }
 }
