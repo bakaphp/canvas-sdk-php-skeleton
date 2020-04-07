@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Baka\Http\Api\BaseController as BakaBaseController;
-use Kanvas\Sdk\Passthroughs\PhalconPassthrough;
 use Phalcon\Http\Response;
 use Kanvas\Sdk\Kanvas;
 use Kanvas\Sdk\Apps;
 use Exception;
 
 /**
- * Class IndexController.
+ * Class AclController.
  *
  * @package Gewaer\Api\Controllers
  *
@@ -35,6 +34,11 @@ class AclController extends BakaBaseController
         }
     }
 
+    /**
+     * Update ACL Permissions.
+     *
+     * @return Response
+     */
     public function updatePermissions(): Response
     {
         $appKey = $this->request->getPostData()['key'];
