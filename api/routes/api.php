@@ -16,7 +16,8 @@ $privateRoutes = [
     Route::get('/users-custom-fields')->controller('UsersController')->action('getAllCustomFields'),
     Route::post('/custom-fields/users')->controller('UsersController')->action('getCustomFields'),
     Route::post('/users-custom-fields')->controller('UsersController')->action('addCustomFields'),
-    Route::post('/custom-fields-modules/{name}')->controller('UsersController')->action('addCustomFieldsModule')
+    Route::post('/custom-fields-modules/{name}')->controller('UsersController')->action('addCustomFieldsModule'),
+    Route::post('/acl')->controller('AclController')->action('updatePermissions')
 ];
 
 // Lets merge Kanvas Default Routes with the public Routes since Kanvas routes

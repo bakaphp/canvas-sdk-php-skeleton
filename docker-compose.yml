@@ -44,6 +44,20 @@ services:
       - local-network
       - public-network
 
+  mysql:
+    image: mariadb:10.4
+    restart: always
+    ports:
+      - "3306:3306"
+    env_file:
+      - '.env'
+    volumes:
+      - "db-data:/var/lib/mysql"
+      - "./storage/ci/mysql.cnf:/etc/mysql/conf.d/kanvas.cnf"
+    networks:
+        - local-network
+        - canvasproxynet
+
   redis:
     image: 'redis:5.0.5-alpine'
     ports: 
