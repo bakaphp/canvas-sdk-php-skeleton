@@ -5,10 +5,10 @@
 return [
     'paths' => [
         'migrations' => [
-            getenv('CANVAS_CORE_PATH') . '/storage/db/migrations',
+            getenv('PHINX_CONFIG_DIR') . '/storage/db/migrations',
         ],
         'seeds' => [
-            getenv('CANVAS_CORE_PATH') . '/storage/db/seeds',
+            getenv('PHINX_CONFIG_DIR') . '/storage/db/seeds',
         ]
     ],
     'environments' => [
