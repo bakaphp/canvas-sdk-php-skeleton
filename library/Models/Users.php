@@ -19,7 +19,7 @@ use Kanvas\Sdk\Traits\PermissionsTrait;
  * @property Companies $defaultCompany
  * @property \Phalcon\Di $di
  */
-class Users extends CanvasUsers
+class Users extends BaseModel
 {
     use PermissionsTrait;
     use FileSystemModelTrait;
