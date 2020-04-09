@@ -16,7 +16,6 @@ class BootstrapCest
         ob_end_clean();
         $results = json_decode($actual, true);
         $I->assertEquals('1.0', $results['jsonapi']['version']);
-        $I->assertEmpty($results['data']);
         $I->assertEquals(HttpCode::getDescription(404), $results['errors']['message']);
     }
 }
