@@ -10,7 +10,6 @@ class CheckHelpTaskCest
     {
         $I->runShellCommand('./runCli');
         $I->seeResultCodeIs(0);
-        $I->seeInShellOutput('--help');
-        $I->seeInShellOutput('--clear-cache');
+        $I->seeInShellOutput('Woot Kanvas');
     }
 }
