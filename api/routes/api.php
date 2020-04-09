@@ -3,7 +3,7 @@
 use Baka\Router\RouteGroup;
 use Baka\Router\Route;
 use Kanvas\Sdk\Routes\RouteConfigurator;
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 
 $publicRoutes = [
     Route::get('/status')->controller('IndexController')->action('status'),
