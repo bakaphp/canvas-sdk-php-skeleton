@@ -19,6 +19,6 @@ class MainTask extends PhTask
      */
     public function mainAction()
     {
-        echo 'Woot Kanvas';
+        echo 'Woot Kanvas'.PHP_EOL;
     }
 }
