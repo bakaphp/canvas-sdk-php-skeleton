@@ -3,23 +3,10 @@
 namespace Gewaer\Core;
 
 use Dotenv\Dotenv;
-use Phalcon\Loader;
+use function Canvas\Core\appPath;
 
 // Register the auto loader
-require 'functions.php';
-
-$loader = new Loader();
-$namespaces = [
-    'Gewaer' => appPath('/library'),
-    'Gewaer\Api\Controllers' => appPath('/api/controllers'),
-    'Gewaer\Cli\Tasks' => appPath('cli/tasks/'),
-    'Niden\Tests' => appPath('/tests'),
-    'Gewaer\Tests' => appPath('/tests')
-];
-
-$loader->registerNamespaces($namespaces);
-
-$loader->register();
+require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . '/vendor/canvas/core/src/Core/functions.php';
 
 /**
  * Composer Autoloader.
