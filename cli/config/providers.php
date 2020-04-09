@@ -13,6 +13,7 @@ use Gewaer\Providers\AclProvider;
 use Gewaer\Providers\AppProvider;
 use Gewaer\Providers\RegistryProvider;
 use Gewaer\Providers\LoggerProvider;
+use Canvas\Providers\CliDispatcherProvider;
 
 return [
     ConfigProvider::class,
@@ -22,6 +23,7 @@ return [
     ErrorHandlerProvider::class,
     DatabaseProvider::class,
     CacheDataProvider::class,
+    CliDispatcherProvider::class,
     RedisProvider::class,
     AclProvider::class
 ];
