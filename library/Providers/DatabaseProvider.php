@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Gewaer\Providers;
 
 use Canvas\Providers\DatabaseProvider as CanvasDatabaseProvider;
-use function Gewaer\Core\envValue;
+use function Canvas\Core\envValue;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\DiInterface;
 use PDO;
