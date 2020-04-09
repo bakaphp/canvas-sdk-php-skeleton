@@ -6,6 +6,7 @@ use Kanvas\Sdk\Routes\RouteConfigurator;
 use function Canvas\Core\appPath;
 
 $publicRoutes = [
+    Route::get('/')->controller('IndexController')->action('index'),
     Route::get('/status')->controller('IndexController')->action('status'),
     Route::post('/login')->controller('AuthController')->action('login'),
     Route::post('/signup')->controller('AuthController')->action('signup')
