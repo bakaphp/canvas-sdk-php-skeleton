@@ -5,22 +5,15 @@ declare(strict_types=1);
 namespace Gewaer\Api\Controllers;
 
 use Phalcon\Http\Response;
-use Canvas\Api\Controllers\IndexController as CanvasIndexController;
-use Canvas\Canvas;
-use Canvas\Resources\Auth;
-use Canvas\Resources\Users;
+use Canvas\Api\Controllers\IndexController as BakaIndexController;
 
 /**
  * Class IndexController.
  *
  * @package Gewaer\Api\Controllers
  *
- * @property Redis $redis
- * @property Beanstalk $queue
- * @property Mysql $db
- * @property \Monolog\Logger $log
  */
-class IndexController extends BaseController
+class IndexController extends BakaIndexController
 {
     /**
      * Index.
@@ -32,7 +25,7 @@ class IndexController extends BaseController
      */
     public function index($id = null) : Response
     {
-        return $this->response(['Woot Canvas']);
+        return $this->response(['Woot Gewaer']);
     }
 
     /**
