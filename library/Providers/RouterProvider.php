@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Providers;
 
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 use Baka\Router\Providers\RouterProvider as BakaRouterProvider;
 
 class RouterProvider extends BakaRouterProvider
