@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Providers;
 
-use function Gewaer\Core\appPath;
+use function Canvas\Core\appPath;
 use Phalcon\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Config;
