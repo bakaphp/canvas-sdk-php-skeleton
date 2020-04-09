@@ -2,8 +2,8 @@
 
 namespace Gewaer\Core;
 
-use function Gewaer\Core\appPath;
-use function Gewaer\Core\envValue;
+use function Canvas\Core\appPath;
+use function Canvas\Core\envValue;
 use Gewaer\Constants\Flags;
 
 return [
