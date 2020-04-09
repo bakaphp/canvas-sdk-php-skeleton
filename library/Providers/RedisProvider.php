@@ -5,7 +5,7 @@ namespace Gewaer\Providers;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\DiInterface;
 use Redis;
-use function Gewaer\Core\envValue;
+use function Canvas\Core\envValue;
 
 class RedisProvider implements ServiceProviderInterface
 {
