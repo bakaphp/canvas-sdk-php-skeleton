@@ -5,9 +5,7 @@ namespace Gewaer\Tests\api;
 use ApiTester;
 use Page\Data;
 use function json_decode;
-use Exception;
 use Phalcon\Security\Random;
-use Canvas\Models\Users;
 
 class AuthCest
 {
@@ -19,21 +17,17 @@ class AuthCest
      */
     public function loginUnknownUser(ApiTester $I)
     {
-        try {
-            $I->sendPOST(
-                Data::$loginUrl,
-                [
-                    'email' => 'user@example.com',
-                    'password' => 'pass',
-                ]
-            );
+        $I->sendPOST(
+            Data::$loginUrl,
+            [
+                'email' => 'user@example.com',
+                'password' => 'pass',
+            ]
+        );
 
-            $response = $e->getMessage();
-        } catch (Exception $e) {
-            $response = $e->getMessage();
-        }
+        $response = json_decode($I->grabResponse(), true);
 
-        $I->assertEquals('No User Found', $response);
+        $I->assertEquals('Not Found', $response['errors']['type']);
     }
 
     /**
@@ -47,7 +41,7 @@ class AuthCest
         $random = new Random();
         $userName = $random->base58();
 
-        $email = !Users::findFirstByEmail('tes2t@baka.io') ? 'tes2t@baka.io' : $userName . '@baka.io';
+        $email = 'tes2t@baka.io'; //$userName . '@baka.io';
 
         $I->sendPOST(Data::$usersUrl, [
             'email' => $email,
