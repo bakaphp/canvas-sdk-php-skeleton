@@ -13,6 +13,7 @@ use Gewaer\Providers\DatabaseProvider;
 use Gewaer\Providers\MiddlewareProvider;
 use Gewaer\Providers\RedisProvider;
 use Gewaer\Providers\AclProvider;
+use Canvas\Providers\ResponseProvider;
 
 return [
     ConfigProvider::class,
@@ -20,6 +21,7 @@ return [
     RedisProvider::class,
     AclProvider::class,
     RequestProvider::class,
+    ResponseProvider::class,
     RouterProvider::class,
     RegistryProvider::class,
     DatabaseProvider::class,
