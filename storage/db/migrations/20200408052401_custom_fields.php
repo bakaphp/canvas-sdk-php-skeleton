@@ -17,7 +17,6 @@ class CustomFields extends Phinx\Migration\AbstractMigration
             ])
             ->addColumn('id', 'biginteger', [
                 'null' => false,
-                'default' => '0',
                 'limit' => MysqlAdapter::INT_BIG,
                 'identity' => 'enable'
             ])
