@@ -6,12 +6,12 @@ class CustomFields extends Phinx\Migration\AbstractMigration
 {
     public function change()
     {
-        $this->table('custom_fields', [
+   $this->table('custom_fields', [
                 'id' => false,
                 'primary_key' => ['id'],
                 'engine' => 'InnoDB',
-                'encoding' => 'latin1',
-                'collation' => 'latin1_swedish_ci',
+                'encoding' => 'utf8mb4',
+                'collation' => 'utf8mb4_unicode_ci',
                 'comment' => '',
                 'row_format' => 'DYNAMIC',
             ])
@@ -33,8 +33,8 @@ class CustomFields extends Phinx\Migration\AbstractMigration
             ->addColumn('model_name', 'string', [
                 'null' => false,
                 'limit' => 255,
-                'collation' => 'latin1_swedish_ci',
-                'encoding' => 'latin1',
+                'collation' => 'utf8mb4_unicode_ci',
+                'encoding' => 'utf8mb4',
                 'after' => 'users_id',
             ])
             ->addColumn('entity_id', 'integer', [
@@ -45,22 +45,22 @@ class CustomFields extends Phinx\Migration\AbstractMigration
             ->addColumn('name', 'string', [
                 'null' => false,
                 'limit' => 255,
-                'collation' => 'latin1_swedish_ci',
-                'encoding' => 'latin1',
+                'collation' => 'utf8mb4_unicode_ci',
+                'encoding' => 'utf8mb4',
                 'after' => 'entity_id',
             ])
             ->addColumn('label', 'string', [
                 'null' => false,
                 'limit' => 255,
-                'collation' => 'latin1_swedish_ci',
-                'encoding' => 'latin1',
+                'collation' => 'utf8mb4_unicode_ci',
+                'encoding' => 'utf8mb4',
                 'after' => 'name',
             ])
             ->addColumn('value', 'text', [
                 'null' => false,
                 'limit' => MysqlAdapter::TEXT_LONG,
-                'collation' => 'latin1_swedish_ci',
-                'encoding' => 'latin1',
+                'collation' => 'utf8mb4_unicode_ci',
+                'encoding' => 'utf8mb4',
                 'after' => 'label',
             ])
             ->addColumn('created_at', 'datetime', [
