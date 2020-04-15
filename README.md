@@ -70,3 +70,11 @@ On the frontend side you will need to add relationship files or filesystem . Wit
 `?relationships=files`
 
 `http://ai.app.dev/v1/route?relationships=files`
+
+
+#### How to use the Filesystem via Phalcon Passthrough
+
+To use the Filesystem feature on a model in Kanvas API, a simple POST call `/filesystem` can be made to the Kanvas API. You just need to make sure
+that the content type of your body is `form-data` and add your file on said body of the request.
+
+To retrieve the file, do a GET request call to the same endpoint.
