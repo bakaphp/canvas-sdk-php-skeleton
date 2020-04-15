@@ -18,7 +18,7 @@
     "vlucas/phpdotenv": "^2.4",
     "mark-gerarts/auto-mapper-plus": "2.0.0-alpha1",
     "monolog/monolog": "^1.23",
-    "odan/phinx-migrations-generator": "^4"
+    "odan/phinx-migrations-generator": "dev-master"
   },
   "require-dev": {
     "codeception/codeception": "^2.4",
