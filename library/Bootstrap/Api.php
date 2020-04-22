@@ -7,6 +7,7 @@ use Canvas\Bootstrap\Api as Bootstrap;
 use Phalcon\Mvc\Micro;
 use Throwable;
 use Kanvas\Sdk\Kanvas;
+use Kanvas\Sdk\Traits\ApiKeyTrait;
 
 /**
  * Class Api.
@@ -18,6 +19,11 @@ use Kanvas\Sdk\Kanvas;
 class Api extends Bootstrap
 {
     /**
+     * Api Key Trait.
+     */
+    use ApiKeyTrait;
+
+    /**
      * Run the application.
      *
      * @return mixed
@@ -25,7 +31,7 @@ class Api extends Bootstrap
     public function run()
     {
         try {
-            Kanvas::setApiKey(getenv('KANVAS_SDK_API_KEY'));
+            Kanvas::setApiKey($this->getSdkKey());
             return $this->application->handle();
         } catch (Throwable $e) {
             $this->handleException($e)->send();

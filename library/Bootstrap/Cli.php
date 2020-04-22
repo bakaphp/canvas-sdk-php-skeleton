@@ -7,6 +7,7 @@ namespace Gewaer\Bootstrap;
 use Canvas\Bootstrap\Cli as Bootstrap;
 use Phalcon\Cli\Console;
 use Kanvas\Sdk\Kanvas;
+use Kanvas\Sdk\Traits\ApiKeyTrait;
 
 /**
  * Class Cli.
@@ -18,13 +19,18 @@ use Kanvas\Sdk\Kanvas;
 class Cli extends Bootstrap
 {
     /**
+    * Api Key Trait.
+    */
+    use ApiKeyTrait;
+
+    /**
      * Run the application.
      *
      * @return mixed
      */
     public function run()
     {
-        Kanvas::setApiKey(getenv('KANVAS_SDK_API_KEY'));
+        Kanvas::setApiKey($this->getSdkKey());
 
         parent::run();
     }
