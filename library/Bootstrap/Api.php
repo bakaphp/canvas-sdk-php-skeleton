@@ -31,7 +31,7 @@ class Api extends Bootstrap
     public function run()
     {
         try {
-            Kanvas::setApiKey($this->validateSdkKey());
+            Kanvas::setApiKey($this->getSdkKey());
             return $this->application->handle();
         } catch (Throwable $e) {
             $this->handleException($e)->send();

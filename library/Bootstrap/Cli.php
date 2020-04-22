@@ -30,7 +30,7 @@ class Cli extends Bootstrap
      */
     public function run()
     {
-        Kanvas::setApiKey($this->validateSdkKey());
+        Kanvas::setApiKey($this->getSdkKey());
 
         parent::run();
     }
