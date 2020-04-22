@@ -14,6 +14,8 @@ use Gewaer\Providers\MiddlewareProvider;
 use Gewaer\Providers\RedisProvider;
 use Gewaer\Providers\AclProvider;
 use Canvas\Providers\ResponseProvider;
+use Canvas\Providers\QueueProvider;
+
 
 return [
     ConfigProvider::class,
@@ -25,5 +27,6 @@ return [
     RouterProvider::class,
     RegistryProvider::class,
     DatabaseProvider::class,
+    QueueProvider::class,
     MiddlewareProvider::class
 ];
