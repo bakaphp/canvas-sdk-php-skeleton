@@ -7,6 +7,7 @@ use Canvas\Bootstrap\Api as Bootstrap;
 use Phalcon\Mvc\Micro;
 use Throwable;
 use Kanvas\Sdk\Kanvas;
+use Canvas\Http\Exception\InternalServerErrorException;
 
 /**
  * Class Api.
@@ -24,6 +25,9 @@ class Api extends Bootstrap
      */
     public function run()
     {
+        if (empty(getenv('KANVAS_SDK_API_KEY'))) {
+            throw new InternalServerErrorException('Error.Need to set KANVAS_SDK_API_KEY on environmental variables file(.env)');
+        }
         try {
             Kanvas::setApiKey(getenv('KANVAS_SDK_API_KEY'));
             return $this->application->handle();

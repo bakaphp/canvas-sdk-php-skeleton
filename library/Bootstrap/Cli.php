@@ -24,6 +24,10 @@ class Cli extends Bootstrap
      */
     public function run()
     {
+        if (empty(getenv('KANVAS_SDK_API_KEY'))) {
+            throw new InternalServerErrorException('Error.Need to set KANVAS_SDK_API_KEY on environmental variables file(.env)');
+        }
+
         Kanvas::setApiKey(getenv('KANVAS_SDK_API_KEY'));
 
         parent::run();
