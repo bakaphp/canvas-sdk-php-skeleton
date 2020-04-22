@@ -15,12 +15,14 @@ use Gewaer\Providers\RedisProvider;
 use Gewaer\Providers\AclProvider;
 use Canvas\Providers\ResponseProvider;
 use Canvas\Providers\QueueProvider;
-
+use Canvas\Providers\LoggerProvider;
+use Canvas\Providers\ViewProvider;
 
 return [
     ConfigProvider::class,
     AppProvider::class,
     RedisProvider::class,
+    LoggerProvider::class,
     AclProvider::class,
     RequestProvider::class,
     ResponseProvider::class,
@@ -28,5 +30,6 @@ return [
     RegistryProvider::class,
     DatabaseProvider::class,
     QueueProvider::class,
-    MiddlewareProvider::class
+    MiddlewareProvider::class,
+    ViewProvider::class
 ];
