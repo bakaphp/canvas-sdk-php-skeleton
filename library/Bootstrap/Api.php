@@ -6,6 +6,7 @@ namespace Gewaer\Bootstrap;
 use Canvas\Bootstrap\Api as Bootstrap;
 use Phalcon\Mvc\Micro;
 use Throwable;
+use Canvas\Http\Response;
 use Kanvas\Sdk\Kanvas;
 use Kanvas\Sdk\Traits\ApiKeyTrait;
 
@@ -34,7 +35,8 @@ class Api extends Bootstrap
             Kanvas::setApiKey($this->getSdkKey());
             return $this->application->handle();
         } catch (Throwable $e) {
-            $this->handleException($e)->send();
+            $response = new Response();
+            $response->handleException($e)->send();
         }
     }
 }
