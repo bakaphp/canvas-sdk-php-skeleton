@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Gewaer\Middleware;
 
 use Canvas\Middleware\NotFoundMiddleware as CanvasNotFoundMiddleware;
-use function Gewaer\Core\isSwooleServer;
+use function Canvas\Core\isSwooleServer;
 use Phalcon\Mvc\Micro;
 use Canvas\Http\Response;
 use Canvas\Traits\ResponseTrait;
