@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace Gewaer\Api\Controllers;
 
-use Phalcon\Http\Response;
-use Canvas\Api\Controllers\IndexController as CanvasIndexController;
-use Exception;
-use Kanvas\Sdk\Kanvas;
-use Kanvas\Sdk\Auth;
-use Kanvas\Sdk\Models\Users as SdkUsers;
-use Kanvas\Sdk\CustomFieldsModules;
-use Gewaer\Models\Users;
 use Canvas\Validation as CanvasValidation;
+use Gewaer\Models\Users;
+use Kanvas\Sdk\Resources\CustomFieldsModules;
+use Kanvas\Sdk\Resources\Users as SdkUsers;
+use Phalcon\Http\Response;
 use Phalcon\Validation\Validator\PresenceOf;
 
 /**
@@ -34,9 +30,6 @@ class UsersController extends BaseController
      */
     public function onConstruct()
     {
-        if (!Kanvas::getAuthToken()) {
-            Kanvas::setAuthToken($this->userToken);
-        }
         $this->model = new Users();
     }
 
@@ -50,6 +43,8 @@ class UsersController extends BaseController
      */
     public function index($id = null) : Response
     {
+        // print_r(Auth::getClient()->getAuthToken());
+        // die();
         $users = SdkUsers::find();
         return $this->response($users);
     }
@@ -110,7 +105,7 @@ class UsersController extends BaseController
      */
     public function getAllCustomFields() : Response
     {
-        return $this->response(Users::getAllCustomFields());
+        return $this->response($this->userData->getAllCustomFields());
     }
 
     /**
@@ -129,9 +124,9 @@ class UsersController extends BaseController
         $validation->add('custom_fields_module_id', new PresenceOf(['message' => 'The custom_fields_module_id is required.']));
         $validation->validate($request);
 
-        $customFieldsModule = CustomFieldsModules::retrieve($request['custom_fields_module_id']);
+        $customFieldsModule = CustomFieldsModules::findFirst($request['custom_fields_module_id']);
 
-        return $this->response(Users::getCustomField($request['name'], (int)$customFieldsModule->id));
+        return $this->response($this->userData->getCustomField($request['name'], (int)$customFieldsModule->id));
     }
 
     /**
@@ -151,7 +146,7 @@ class UsersController extends BaseController
         $validation->add('custom_fields_module_id', new PresenceOf(['message' => 'The custom_fields_module_id is required.']));
         $validation->validate($request);
 
-        $customFieldsModule = CustomFieldsModules::retrieve($request['custom_fields_module_id']);
+        $customFieldsModule = CustomFieldsModules::findFirst($request['custom_fields_module_id']);
 
         return $this->response(Users::createCustomField($request['name'], (int)$request['field_type_id'], (int)$customFieldsModule->id));
     }
@@ -161,7 +156,9 @@ class UsersController extends BaseController
      *
      * @method GET
      * @url /status
+     *
      * @param string $name
+     *
      * @return Response
      */
     public function addCustomFieldsModule(string $name) : Response
