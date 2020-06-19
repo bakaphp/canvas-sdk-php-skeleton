@@ -13,6 +13,7 @@ use Gewaer\Providers\AclProvider;
 use Gewaer\Providers\AppProvider;
 use Gewaer\Providers\ConfigProvider;
 use Gewaer\Providers\DatabaseProvider;
+use Gewaer\Providers\MapperProvider;
 use Gewaer\Providers\MiddlewareProvider;
 use Gewaer\Providers\RedisProvider;
 use Gewaer\Providers\RegistryProvider;
@@ -33,5 +34,6 @@ return [
     QueueProvider::class,
     MiddlewareProvider::class,
     ViewProvider::class,
-    FileSystemProvider::class
+    FileSystemProvider::class,
+    MapperProvider::class
 ];
