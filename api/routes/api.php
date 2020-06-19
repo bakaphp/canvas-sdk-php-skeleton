@@ -1,9 +1,9 @@
 <?php
 
-use Baka\Router\RouteGroup;
 use Baka\Router\Route;
-use Kanvas\Sdk\Routes\RouteConfigurator;
+use Baka\Router\RouteGroup;
 use function Canvas\Core\appPath;
+use Kanvas\Sdk\Routes\RouteConfigurator;
 
 $publicRoutes = [
     Route::get('/')->controller('IndexController')->action('index'),
@@ -18,7 +18,8 @@ $privateRoutes = [
     Route::post('/custom-fields/users')->controller('UsersController')->action('getCustomFields'),
     Route::post('/users-custom-fields')->controller('UsersController')->action('addCustomFields'),
     Route::post('/custom-fields-modules/{name}')->controller('UsersController')->action('addCustomFieldsModule'),
-    Route::post('/acl')->controller('AclController')->action('updatePermissions')
+    Route::post('/acl')->controller('AclController')->action('updatePermissions'),
+    Route::crud('/filesystem')->controller('FilesystemController'),
 ];
 
 // Lets merge Kanvas Default Routes with the public Routes since Kanvas routes

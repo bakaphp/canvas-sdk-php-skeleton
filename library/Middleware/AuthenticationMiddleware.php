@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Gewaer\Middleware;
 
-use Phalcon\Mvc\Micro;
 use Canvas\Http\Exception\UnauthorizedException;
-use Kanvas\Sdk\Kanvas;
-use Kanvas\Sdk\Users;
-use Kanvas\Sdk\Auth;
+use Kanvas\Sdk\Resources\Auth;
+use Kanvas\Sdk\Resources\Users;
+use Phalcon\Mvc\Micro;
 
 /**
  * Class AuthenticationMiddleware.
@@ -21,7 +20,9 @@ class AuthenticationMiddleware extends TokenBase
      * Call me.
      *
      * @param Micro $api
+     *
      * @todo need to check section for auth here
+     *
      * @return bool
      */
     public function call(Micro $api)
@@ -40,10 +41,12 @@ class AuthenticationMiddleware extends TokenBase
          */
         $token = $request->getBearerTokenFromHeader();
 
+        Auth::setAuthToken($token);
+
         $api->getDI()->setShared(
             'userData',
             function () use ($config, $token, $request) {
-                Kanvas::setAuthToken($token);
+                // Auth::setAuthToken($token);
                 return Users::getSelf();
             }
         );
@@ -51,8 +54,8 @@ class AuthenticationMiddleware extends TokenBase
         $api->getDI()->setShared(
             'userToken',
             function () use ($config, $token, $request) {
-                Kanvas::setAuthToken($token);
-                return Kanvas::getAuthToken();
+                // Kanvas::setAuthToken($token);
+                return Auth::getClient()->getAuthToken();
             }
         );
 

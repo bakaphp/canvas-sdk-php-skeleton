@@ -21,7 +21,6 @@ return [
     Route::crud('/devices')->controller('ApiController')->action('privateTransporter'),
     Route::crud('/languages')->controller('ApiController')->action('privateTransporter'),
     Route::crud('/webhooks')->controller('ApiController')->action('privateTransporter'),
-    Route::crud('/filesystem')->controller('ApiController')->action('privateTransporter'),
     Route::get('/timezones')->controller('ApiController')->action('privateTransporter'),
     Route::post('/notifications-read-all')->controller('ApiController')->action('privateTransporter'),
     Route::post('/users/{id}/devices')->controller('ApiController')->action('privateTransporter'),

@@ -4,11 +4,11 @@ declare(strict_types=1);
 namespace Gewaer\Bootstrap;
 
 use Canvas\Bootstrap\Api as Bootstrap;
+use Canvas\Http\Response;
+use Kanvas\Sdk\Contracts\ApiKeyTrait;
+use Kanvas\Sdk\Resources\Auth;
 use Phalcon\Mvc\Micro;
 use Throwable;
-use Canvas\Http\Response;
-use Kanvas\Sdk\Kanvas;
-use Kanvas\Sdk\Traits\ApiKeyTrait;
 
 /**
  * Class Api.
@@ -32,7 +32,7 @@ class Api extends Bootstrap
     public function run()
     {
         try {
-            Kanvas::setApiKey($this->getSdkKey());
+            Auth::setApiKey($this->getSdkKey());
             return $this->application->handle();
         } catch (Throwable $e) {
             $response = new Response();

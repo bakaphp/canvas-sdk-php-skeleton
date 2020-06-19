@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Gewaer\Models;
 
-use Kanvas\Sdk\Resources\Users as CanvasUsers;
+use Canvas\Models\FileSystem as CanvasFilesystem;
 
 /**
  * Class Users.
@@ -11,6 +11,6 @@ use Kanvas\Sdk\Resources\Users as CanvasUsers;
  * @package Canvas\Models
  *
  */
-class Users extends CanvasUsers
+class Filesystem extends CanvasFilesystem
 {
 }
