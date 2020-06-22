@@ -3,7 +3,6 @@
 use Baka\Router\Route;
 
 return [
-    Route::crud('/users')->controller('ApiController')->action('privateTransporter')->notVia('post'),
     Route::crud('/companies')->controller('ApiController')->action('privateTransporter'),
     Route::crud('/roles')->controller('ApiController')->action('privateTransporter'),
     Route::crud('/locales')->controller('ApiController')->action('privateTransporter'),

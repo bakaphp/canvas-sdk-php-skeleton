@@ -43,8 +43,6 @@ class UsersController extends BaseController
      */
     public function index($id = null) : Response
     {
-        // print_r(Auth::getClient()->getAuthToken());
-        // die();
         $users = SdkUsers::find();
         return $this->response($users);
     }
@@ -61,15 +59,14 @@ class UsersController extends BaseController
      */
     public function getById($id) : Response
     {
-        $user = SdkUsers::findFirst($id);
-
+        $user = SdkUsers::findFirst((int)$id);
         return $this->response($user);
     }
 
     /**
      * Create new User.
      *
-     * @method GET
+     * @method POST
      * @url /status
      *
      * @return Response
@@ -85,6 +82,22 @@ class UsersController extends BaseController
     /**
      * Update User.
      *
+     * @method PUT
+     * @url /status
+     *
+     * @return Response
+     */
+    public function edit($id) : Response
+    {
+        $request = $this->request->getPut();
+
+        $user = SdkUsers::update((int)$id, $request);
+        return $this->response($user);
+    }
+
+    /**
+     * Update User.
+     *
      * @method GET
      * @url /status
      *
@@ -92,7 +105,7 @@ class UsersController extends BaseController
      */
     public function delete($id) : Response
     {
-        $user = SdkUsers::delete($id);
+        $user = SdkUsers::delete((int)$id);
         return $this->response($user);
     }
 

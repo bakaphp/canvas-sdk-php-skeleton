@@ -13,7 +13,7 @@ $publicRoutes = [
 ];
 
 $privateRoutes = [
-    Route::get('/users')->controller('UsersController')->action('index'),
+    Route::crud('/users')->controller('UsersController')->notVia('post'),
     Route::get('/users-custom-fields')->controller('UsersController')->action('getAllCustomFields'),
     Route::post('/custom-fields/users')->controller('UsersController')->action('getCustomFields'),
     Route::post('/users-custom-fields')->controller('UsersController')->action('addCustomFields'),
