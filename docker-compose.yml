@@ -4,9 +4,11 @@ services:
 
   #php server
   php:
-    image: mctekk/phalconphp:latest
+    image: mctekk/phalconphp:7.4
     volumes:
       - .:/app
+      - ../canvas-core:/canvas-core
+      - ../baka:/baka
     depends_on: 
       - 'redis'
     tty: true

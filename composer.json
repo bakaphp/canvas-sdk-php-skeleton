@@ -1,13 +1,11 @@
 {
   "require": {
-    "php": ">= 7.1",
+    "php": ">= 7.4",
     "ext-openssl": "*",
     "canvas/core": "dev-master",
     "dmkit/phalcon-jwt-auth": "dev-master",
     "hybridauth/hybridauth": "dev-master",
-    "ext-phalcon": ">=3.2.0 <4.0",
-    "baka/http": "^0.5",
-    "baka/router": "^0.1",
+    "ext-phalcon": ">=4",
     "baka/cashier": "dev-master",
     "bakaphp/canvas-sdk-php": "dev-master",
     "dariuszp/cli-progress-bar": "^1.0",
@@ -15,7 +13,7 @@
     "nesbot/carbon": "~1.18",
     "phalcon/incubator": "~3.4",
     "psr/log": "^1.0",
-    "vlucas/phpdotenv": "^2.4",
+    "vlucas/phpdotenv": "^4.1",
     "mark-gerarts/auto-mapper-plus": "2.0.0-alpha1",
     "monolog/monolog": "^1.23",
     "odan/phinx-migrations-generator": "dev-master"
