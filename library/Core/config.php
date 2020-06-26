@@ -2,8 +2,8 @@
 
 namespace Gewaer\Core;
 
-use function Canvas\Core\appPath;
-use function Canvas\Core\envValue;
+use function Baka\appPath;
+use function Baka\envValue;
 use Gewaer\Constants\Flags;
 
 return [

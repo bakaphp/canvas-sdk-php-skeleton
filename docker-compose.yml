@@ -9,6 +9,7 @@ services:
       - .:/app
       - ../canvas-core:/canvas-core
       - ../baka:/baka
+      - ../canvas-sdk-php:/canvas-sdk-php
     depends_on: 
       - 'redis'
     tty: true

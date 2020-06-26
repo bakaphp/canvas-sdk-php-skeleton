@@ -3,16 +3,16 @@
 namespace Gewaer\Providers;
 
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Redis;
-use function Canvas\Core\envValue;
+use function Baka\envValue;
 
 class RedisProvider implements ServiceProviderInterface
 {
     /**
      * @param DiInterface $container
      */
-    public function register(DiInterface $container)
+    public function register(DiInterface $container): void
     {
         $container->setShared(
             'redis',
